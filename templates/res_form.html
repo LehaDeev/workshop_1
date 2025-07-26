@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Результаты анализа</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .risk-high {
+            background-color: #ffcccc;
+        }
+        .risk-medium {
+            background-color: #ffffcc;
+        }
+        .risk-low {
+            background-color: #ccffcc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Результаты анализа риска сердечного приступа</h1>
+    <p>Статус: {{ res }}</p>
+    <p>{{ message }}</p>
+
+    {% if results %}
+    <h2>Результаты предсказания:</h2>
+    <table>
+        <tr>
+            <th>ID пациента</th>
+            <th>Вероятность риска</th>
+            <th>Уровень риска</th>
+        </tr>
+        {% for item in results %}
+        <tr class="risk-{{ 'high' if item.proba|float > 0.7 else 'medium' if item.proba|float > 0.3 else 'low' }}">
+            <td>{{ item.id }}</td>
+            <td>{{ "%.2f%%"|format(item.proba * 100) }}</td>
+            <td>
+                {% if item.proba|float > 0.7 %}
+                    Высокий
+                {% elif item.proba|float > 0.03 %}
+                    Средний
+                {% else %}
+                    Низкий
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    <a href="/">Загрузить новый файл</a>
+</body>
+</html>
