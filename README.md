@@ -10,6 +10,7 @@
 py -m venv venv
 ```
 2. Активируйте виртуальное окружение:
+
 Linux/Mac
 ```bash
 source venv/bin/activate
@@ -25,7 +26,7 @@ pip install -r requirements.txt
 ```
 4. Запустить приложение:
 ```bash
-astapi dev main.py
+fastapi dev main.py
 ```
 Использование:
 1. Откройте
