@@ -7,20 +7,27 @@
 
 1. Создать виртуальное окружение:
 ```bash
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-venv\Scripts\activate     # Windows
+py -m venv venv
+```
+2. Активируйте виртуальное окружение:
+Linux/Mac
+```bash
+source venv/bin/activate
+```
+Windows
+```bash
+venv\Scripts\activate
 ```
 
-2. Установить зависимости:
+3. Установить зависимости:
 ```bash
 pip install -r requirements.txt
 ```
-3. Запустить приложение:
+4. Запустить приложение:
 ```bash
 astapi dev main.py
 ```
-Использование
+Использование:
 1. Откройте
 ```bash
  http://localhost:8000
